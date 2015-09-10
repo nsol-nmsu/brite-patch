@@ -2,7 +2,7 @@
 
 all:	c++ java exe  
  
-clean:  c++clean javaclean guiclean	
+clean:  c++clean javaclean guiclean execlean
 
 c++:
 	@if test -f C++/Makefile; then\
@@ -36,7 +36,12 @@ guiclean:
 	  (cd GUI; make clean ); \
 	fi
 
+execlean:
+	rm -f bin/cppgen
+	rm -f brite
+
 exe:
+	@ln C++/cppgen bin/cppgen
 	@echo "#!/bin/sh" > brite
 	@echo "" >> brite
 	@echo "java -Xmx256M -classpath Java/:. GUI.Brite" >> brite
