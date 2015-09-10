@@ -1,6 +1,6 @@
 # Makefile for BRITE 2.1 C++ Generation Engine
 
-CC = g++ -Wall -Wno-deprecated
+CC = g++ -w
 CFLAGS = -o 
 MODELS=./Models
 
