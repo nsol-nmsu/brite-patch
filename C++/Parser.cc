@@ -25,7 +25,7 @@
 #include "Parser.h"
 #include "Models/Model.h"
 
-#include <algo.h>
+#include <algorithm>
 
 namespace std {
     class istrstream;
