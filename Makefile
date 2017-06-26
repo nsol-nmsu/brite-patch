@@ -6,13 +6,14 @@ clean: c++clean javaclean guiclean execlean
 
 .PHONY: c++ c++clean
 cppgen = C++/cppgen
-c++: bin/cppgen
+c++exe = bin/brite
+c++: $(c++exe)
 
-bin/cppgen: $(cppgen)
-	@echo "Building C++..."
-	@ln -f C++/cppgen bin/cppgen	
+$(c++exe): $(cppgen)
+	@ln -f $(cppgen) $(c++exe)
 
 $(cppgen):
+	@echo "Building C++..."
 	@if test -f C++/Makefile; then\
 		(cd C++; make) ; \
 	fi
@@ -21,7 +22,7 @@ c++clean:
 	@if test -f C++/Makefile; then\
 		(cd C++; make clean); \
 	fi
-	rm -f bin/cppgen
+	rm -f $(c++exe)
 
 .PHONY: java javaclean
 java:
@@ -48,12 +49,13 @@ guiclean:
 	fi
 
 .PHONY: exe execlean
-exe: gui 
-	@echo "#!/bin/sh" > brite
-	@echo "" >> brite
-	@echo "java -Xmx256M -classpath Java/:. GUI.Brite" >> brite
-	@chmod +x brite
-	@echo "Built successfully. Run the BRITE GUI using \"./brite &\""
+bin = britegui
+exe: gui
+	@echo "#!/bin/sh" > $(bin)
+	@echo "" >> $(bin)
+	@echo "java -Xmx256M -classpath Java/:. GUI.Brite" >> $(bin)
+	@chmod +x $(bin)
+	@echo "Built successfully. Run the BRITE GUI using \"./$(bin) &\", or use the C++ binary $(c++exe)"
 
 execlean:
-	rm -f brite
+	rm -f $(bin)
