@@ -6,6 +6,7 @@ bin/*
 GUI_GEN.conf
 seed_file
 last_seed_file
+*.brite
 
 # Compiled C++ files
 C++/*.o
