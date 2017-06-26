@@ -1,14 +1,16 @@
-#----------------------------- MAKEFILE For Java BRITE
+# Makefile for BRITE 2.1 Java Generation Engine
 
-JFLAGS=-O -classpath ../:.
+JFLAGS=-O -classpath .
+javafiles = $(wildcard **/*.java)
+classfiles = $(javafiles:.java=.class)
 
-all:
-	javac ${JFLAGS} Main/*.java Graph/*.java Model/*.java Import/*.java Export/*.java Util/*.java
+all: $(classfiles)
+$(classfiles): $(javafiles)
+	javac ${JFLAGS} $(javafiles)
 
 javadoc:
 	rm -rf javadoc; mkdir javadoc; javadoc -d javadoc/ Main Topology Model Graph Import Export Util 
 
 clean: 
-	rm -f Main/*.class Export/*.class Graph/*.class Util/*.class Topology/*.class Model/*.class Util/*.class Import/*.class 
-	rm -f Main/*~ Export/*~ Import/*~ Graph/*~ Util/*~ Topology/*~ Model/*~ Util/*~
+	rm -f **/*.class
 	rm -rf javadoc

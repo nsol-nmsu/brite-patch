@@ -1,0 +1,8 @@
+brite
+bin/*
+
+C++/*.o
+C++/cppgen
+
+Java/**/*.class
+GUI/**/*.class
