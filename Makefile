@@ -10,6 +10,7 @@ c++exe = bin/brite
 c++: $(c++exe)
 
 $(c++exe): $(cppgen)
+	@mkdir -p bin
 	@ln -f $(cppgen) $(c++exe)
 
 $(cppgen):
