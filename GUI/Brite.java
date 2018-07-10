@@ -375,7 +375,7 @@ public final class Brite extends JDialog implements ActionListener, Runnable
     
     if ( ((String)ExeChoicesComboBox.getSelectedItem()).equals(CPPEXE)) {
       runC= true;
-      cmdExe = "bin"+sep+"cppgen ";
+      cmdExe = "bin"+sep+"brite ";
     }
     System.out.println(cmdExe);
     

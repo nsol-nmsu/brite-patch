@@ -1,8 +1,12 @@
-#----------------------------- MAKEFILE For Java BRITE GUI
+# Makefile for Java BRITE GUI
 
-all:
-	javac -O -classpath ../:.:../Java/ *.java
+javafiles = $(wildcard *.java)
+classfiles = $(javafiles:.java=.class)
+
+all: $(classfiles)
+
+$(classfiles): $(javafiles)
+	javac -O -classpath ../:.:../Java/ $(javafiles)
 
 clean: 
 	rm -rf *.class
-	rm -rf *~
